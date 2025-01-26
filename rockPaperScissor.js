@@ -12,6 +12,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
+    
     let choice = prompt("Choose from the following: \n 1. Rock\n 2. Paper\n 3. Scissors");
     if (choice == "1") {
         return "Rock";
@@ -29,8 +30,10 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     let win = false;
-  
-    if (humanChoice == "Rock" && computerChoice == "Scissors"){
+    console.log("You chose: " + humanChoice)
+    console.log("The computer chose: " + computerChoice)
+
+    if (humanChoice == "Rock" && computerChoice == "Scissors") {
         win = true;
     }
     else if (humanChoice == "Scissors" && computerChoice == "Paper") {
@@ -41,24 +44,33 @@ function playRound(humanChoice, computerChoice) {
     }
 
     if (humanChoice == computerChoice) {
-        console.log("You tied. Both of you chose " + humanChoice)
+        window.alert("You tied. Both of you chose " + humanChoice)
     }
     else if (win == true) {
-        console.log("You win! " + humanChoice + " beats " + computerChoice);
         humanScore++;
+        window.alert("You chose: " + humanChoice + "\n" +
+                     "The computer chose: " + computerChoice + "\n" + 
+                     "You win! " + humanChoice + " beats " + computerChoice + "\n\n" +
+                     "Your score: " + humanScore + "\nComputer score: " + computerScore);
     }
     else {
-        console.log("You lose! " + computerChoice + " beats " + humanChoice);
         computerScore++;
+        window.alert("You chose: " + humanChoice + "\n" +
+                     "The computer chose: " + computerChoice + "\n" + 
+                     "You lose! " + computerChoice + " beats " + humanChoice + "\n\n" +
+                     "Your score: " + humanScore + "\nComputer score: " + computerScore);
     }
     return
 }
 
+function playGame() {
+    for (i = 0; i < 5; i++) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection)
+    }
+}
 
 let humanScore = 0;
 let computerScore = 0;
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-console.log(computerSelection)
-
-playRound(humanSelection, computerSelection);
+playGame();
