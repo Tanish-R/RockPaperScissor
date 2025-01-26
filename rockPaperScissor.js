@@ -74,3 +74,12 @@ function playGame() {
 let humanScore = 0;
 let computerScore = 0;
 playGame();
+if (humanScore > computerScore) {
+    window.alert("Congrats, you won.")
+}
+else if (humanScore == computerScore) {
+    window.alert("You tied.")
+}
+else if (humanScore < computerScore) {
+    window.alert("Better luck next time, you lost.")
+}
