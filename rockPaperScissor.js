@@ -1,6 +1,5 @@
 function getComputerChoice() {
     let randNum = Math.floor(Math.random() * 3);
-    console.log(randNum)
     if (randNum == 0) {
         return "Rock";
     }
@@ -13,7 +12,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = prompt("Choose from the following: \n 1. Rock\n 2.Paper\n 3.Scissors");
+    let choice = prompt("Choose from the following: \n 1. Rock\n 2. Paper\n 3. Scissors");
     if (choice == "1") {
         return "Rock";
     }
@@ -28,5 +27,38 @@ function getHumanChoice() {
     }
 }
 
-let ans = getHumanChoice();
-console.log(ans);
+function playRound(humanChoice, computerChoice) {
+    let win = false;
+  
+    if (humanChoice == "Rock" && computerChoice == "Scissors"){
+        win = true;
+    }
+    else if (humanChoice == "Scissors" && computerChoice == "Paper") {
+        win = true;
+    }
+    else if (humanChoice == "Paper" && computerChoice == "Rock") {
+        win = true;
+    }
+
+    if (humanChoice == computerChoice) {
+        console.log("You tied. Both of you chose " + humanChoice)
+    }
+    else if (win == true) {
+        console.log("You win! " + humanChoice + " beats " + computerChoice);
+        humanScore++;
+    }
+    else {
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        computerScore++;
+    }
+    return
+}
+
+
+let humanScore = 0;
+let computerScore = 0;
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+console.log(computerSelection)
+
+playRound(humanSelection, computerSelection);
